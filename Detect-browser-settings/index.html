@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detect Browser Settings</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="lib/pace.js"></script>
+    <link href="lib/theme.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            background-color: #000;
+        }
+        
+        html {
+            background-color: black;
+        }
+        
+        .pace-running> :not(.pace) {
+            opacity: 0;
+        }
+        
+        .pace-done> :not(.pace) {
+            opacity: 1;
+            transition: opacity .5s ease;
+        }
+        
+        .center-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            color: white;
+            border-radius: 25px;
+        }
+        
+        .desc {
+            font-size: 3rem;
+        }
+        
+        .header-title {
+            font-size: 8rem;
+        }
+        
+        .dropdown-menu li {
+            font-size: 18px;
+        }
+        
+        ul {
+            list-style-type: none;
+            font-size: 2.5rem;
+        }
+        
+        #step1 {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="center-div">
+        <div id="step1" class="box">
+            <div class="container-fluid">
+                <h1 class="header-title">Collecting Details</h1>
+                <p class="desc">Here is what I collected so far.</p>
+                <ul>
+                    <li id="one"></li>
+                    <li id="two"></li>
+                    <li id="three"></li>
+                    <li id="four"></li>
+                    <li id="five"></li>
+                </ul>
+                <button class="stepper btn btn-primary btn-lg">Begin</button>
+                <br>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="lib/platform.js"></script>
+</body>
+
+<script>
+    var browserName;
+    var browserVersion;
+    var osName;
+    var osVersion;
+    var width;
+
+    $(document).ready(function() {
+        browserDetection();
+        $("#step1").fadeIn();
+    });
+
+    function browserDetection() {
+        browserName = platform.name;
+        browserVersion = platform.version;
+        osName = platform.os.family;
+        osVersion = platform.os.version;
+        width = screen.width;
+        $("#one").text("Your browser: " + browserName);
+        $("#two").text("Your browser Version: " + browserVersion);
+        $("#three").text("Your Operating System: " + osName);
+        $("#four").text("Your OS Version: " + osVersion);
+        $("#five").text("Your Screen Width: " + width);
+        console.log(platform.name);
+        console.log(platform.version);
+        console.log(platform.os.family);
+        console.log(platform.os.version);
+        console.log(platform.os.width);
+    }
+
+</script>
+
+</html>
