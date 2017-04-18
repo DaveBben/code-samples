@@ -1,0 +1,28 @@
+/*Two Ways to put div in the center of the screen. The first one requires a specified width and height. The second one doesn't and just uses translates
+source: https://stackoverflow.com/questions/9862167/positioning-div-element-at-center-of-screen
+
+*/
+
+
+/*Requried Width and height*/
+
+.center-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}
+
+
+/*Translates*/
+
+.center-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
